@@ -3,8 +3,14 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
+    *ngIf="sidenav.mode==='over'"(click)="sidenav.toggle()"
   >
-    <mat-icon>menu</mat-icon>
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
   </button>
   <span>My App</span>
   <span class="example-spacer"></span>
@@ -25,7 +31,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav #sidenav = "matSidenav" mode="side" opened>
     <img
       class="avatar mat-elevation-z8"
       src="https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/335482380_181750571298267_3585917150559041046_n.jpg?_nc_cat=102&cb=99be929b-59f725be&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8uaU_q4WdsYAX8S-qRH&_nc_ht=scontent-mia3-2.xx&oh=00_AfA9l03lvvEmaIRCDHdOhxCexakKZapAeYVWjghpL22M4w&oe=64BA4011"
@@ -42,5 +48,9 @@
       <span>Salir</span>
     </button>
   </mat-sidenav>
-  <mat-sidenav-content>Main content</mat-sidenav-content>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      Main Content
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
